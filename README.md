@@ -1,9 +1,33 @@
 # git-commit-script
 
+## Installation
+
+Run this command on terminal.
+
+```shell
+sudo curl https://raw.githubusercontent.com/bikal1000/git-commit-script/master/commit -o /usr/local/bin/commit && sudo chmod +x /usr/local/bin/commit
+```
+
 ## Usage
-1. Download the script or clone the repository
-2. Make the script executable by running `chmod +x commit.sh`
-3. Run the script by executing the command `./commit.sh "Commit message"`
+* If your current branch name is `XP-1548-feature-branch-name`
+
+```shell
+commit "commit message"
+propt for commit type: change
+
+# becomes
+    git commit -m "Change: commit message #XP-1548"
+```
+
+* If your current branch name is `feature-branch-name`
+
+```shell
+commit "commit message"
+propt for commit type: change
+
+# becomes
+    git commit -m "Change: commit message"
+```
 
 ## Script functionality
 - Prompts the user for the type of commit (e.g "fix", "add", "change", etc.)
