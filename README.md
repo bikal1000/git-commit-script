@@ -12,8 +12,7 @@ sudo curl https://raw.githubusercontent.com/bikal1000/git-commit-script/master/c
 * If your current branch name is `XP-1548-feature-branch-name`
 
 ```shell
-commit "commit message"
-propt for commit type: change
+commit "issue type" "commit message"
 
 # becomes
     git commit -m "Change: commit message #XP-1548"
@@ -22,8 +21,7 @@ propt for commit type: change
 * If your current branch name is `feature-branch-name`
 
 ```shell
-commit "commit message"
-propt for commit type: change
+commit "issue type" "commit message"
 
 # becomes
     git commit -m "Change: commit message"
