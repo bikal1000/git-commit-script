@@ -30,6 +30,10 @@ commit "issue type" "commit message"
 * If you want to push current branch to remote
 ```shell
 commit "issue type" "commit message" -p
+
+# becomes
+git commit -m "Change: commit message #XP-1548"
+git push origin feature-branch-name
 ```
 
 
