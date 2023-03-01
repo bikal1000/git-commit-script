@@ -27,12 +27,18 @@ commit "issue type" "commit message"
     git commit -m "Change: commit message"
 ```
 
+* If you want to push current branch to remote
+```shell
+commit "issue type" "commit message" -p
+
+
 ## Script functionality
 - Prompts the user for the type of commit (e.g "fix", "add", "change", etc.)
 - Automatically retrieves the current branch name as the task ID
 - Capitalizes the first letter of the commit type
 - Creates the commit message in the format of "$type: $commit_message #$task_id" if task id is matched otherwise "$type: $commit_message"
 - Runs the git commit command with the modified message
+- Push the current branch after commit 
 
 ## Note
 - The script assumes that you are currently on the branch you want to create a commit for.
