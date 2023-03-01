@@ -12,3 +12,8 @@ then
 else
     git commit -m "$issue_type: $commit_message #$task_id"
 fi
+
+if [[ "$3" == "-p" ]]
+then
+    git push origin $(git rev-parse --abbrev-ref HEAD)
+fi
