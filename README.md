@@ -30,6 +30,7 @@ commit "issue type" "commit message"
 * If you want to push current branch to remote
 ```shell
 commit "issue type" "commit message" -p
+```
 
 
 ## Script functionality
