@@ -12,36 +12,41 @@ sudo curl https://raw.githubusercontent.com/bikal1000/git-commit-script/master/c
 * If your current branch name is `XP-1548-feature-branch-name`
 
 ```shell
-commit "issue type" "commit message"
+commit
 
-# becomes
-    git commit -m "Change: commit message #XP-1548"
+```
+```shell
+```bash
+Select commit type:
+1) Add
+2) Change
+3) Fix
+4) Refactor
+#? 1
+Enter scope: my-feature
+Enter commit message: Implemented new feature
+```
 ```
 
-* If your current branch name is `feature-branch-name`
-
 ```shell
-commit "issue type" "commit message"
-
-# becomes
-    git commit -m "Change: commit message"
+# output
+    git commit -m "Add(my-feature): Implemented new feature #XP-1548"
 ```
 
 * If you want to push current branch to remote
 ```shell
-commit "issue type" "commit message" -p
+commit -p
 
 # becomes
-git commit -m "Change: commit message #XP-1548"
+git commit -m "Add(my-feature): Implemented new feature #XP-1548"
 git push origin feature-branch-name
 ```
 
 
 ## Script functionality
-- Prompts the user for the type of commit (e.g "fix", "add", "change", etc.)
+- Prompts the user to select the commit type.
 - Automatically retrieves the current branch name as the task ID
-- Capitalizes the first letter of the commit type
-- Creates the commit message in the format of "$type: $commit_message #$task_id" if task id is matched otherwise "$type: $commit_message"
+- Creates the commit message in the format of "$type($scope): $commit_message #$task_id" if task id is matched otherwise "$type($scope): $commit_message"
 - Runs the git commit command with the modified message
 - Push the current branch after commit 
 

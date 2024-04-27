@@ -1,19 +1,40 @@
 #!/usr/bin/env bash
 
-issue_type="$1"
-commit_message="$2"
+# Define commit types
+commit_types=("Add" "Change" "Fix" "Refactor")
 
-issue_type="$(tr '[:lower:]' '[:upper:]' <<< ${issue_type:0:1})${issue_type:1}"
+# Prompt for commit type
+echo "Select commit type:"
+select commit_type in "${commit_types[@]}"
+do
+    if [[ " ${commit_types[@]} " =~ " ${commit_type} " ]]; then
+        break
+    else
+        echo "Invalid selection. Please try again."
+    fi
+done
 
-task_id=$(git rev-parse --abbrev-ref HEAD | grep -o "^[A-Z]*-[0-9]*")
-if [ -z "$task_id" ]
-then
-    git commit -m "$issue_type: $commit_message"
+# Prompt for scope
+read -p "Enter scope: " scope
+# Replace spaces with hyphens in the scope
+scope="${scope// /-}"
+
+# Prompt for commit message
+read -p "Enter commit message: " commit_message
+
+# Get the task ID from the branch name
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+if [[ "$branch_name" =~ [A-Z]+-[0-9]+ ]]; then
+    task_id=${BASH_REMATCH[0]}
+    formatted_commit="$commit_type($scope): $commit_message #$task_id"
 else
-    git commit -m "$issue_type: $commit_message #$task_id"
+    formatted_commit="$commit_type($scope): $commit_message"
 fi
 
-if [[ "$3" == "-p" ]]
-then
-    git push origin $(git rev-parse --abbrev-ref HEAD)
+# Commit the changes
+git commit -m "$formatted_commit"
+
+# Push if -p flag is provided
+if [[ "$1" == "-p" ]]; then
+    git push origin "$branch_name"
 fi
