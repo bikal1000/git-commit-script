@@ -19,8 +19,20 @@ read -e -p "Enter scope: " scope
 # Replace spaces with hyphens in the scope
 scope="${scope// /-}"
 
+# Validate scope
+if [[ -z $scope ]]; then
+    echo "Scope cannot be empty. Aborting."
+    exit 1
+fi
+
 # Prompt for commit message
 read -e -p "Enter commit message: " commit_message
+
+#validate commit message
+if [[ -z $commit_message ]]; then
+    echo "Commit message cannot be empty. Aborting."
+    exit 1
+fi
 
 # Get the task ID from the branch name
 branch_name=$(git rev-parse --abbrev-ref HEAD)
