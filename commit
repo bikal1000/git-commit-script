@@ -15,12 +15,12 @@ do
 done
 
 # Prompt for scope
-read -p "Enter scope: " scope
+read -e -p "Enter scope: " scope
 # Replace spaces with hyphens in the scope
 scope="${scope// /-}"
 
 # Prompt for commit message
-read -p "Enter commit message: " commit_message
+read -e -p "Enter commit message: " commit_message
 
 # Get the task ID from the branch name
 branch_name=$(git rev-parse --abbrev-ref HEAD)
