@@ -18,10 +18,11 @@ commit
 ```shell
 ```bash
 Select commit type:
-1) Add
-2) Change
-3) Fix
-4) Refactor
+1) Update
+2) Add
+3) Change
+4) Fix
+5) Refactor
 #? 1
 Enter scope: my-feature
 Enter commit message: Implemented new feature
