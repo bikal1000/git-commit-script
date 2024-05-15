@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Define commit types
-commit_types=("Add" "Change" "Fix" "Refactor")
+commit_types=("Update" "Add" "Change" "Fix" "Refactor")
 
 # Prompt for commit type
 echo "Select commit type:"
